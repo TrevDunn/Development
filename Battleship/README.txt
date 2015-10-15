@@ -55,6 +55,13 @@ This is a version of the classic game BATTLESHIP. This will develop in three par
 
 
 
+		Notes:
+			Use <div data-position="" (v?) to determine ?>
+
+
+
+
+
 	2. Be able to set up your own board:
 
 		Allow player to follow Ship Placement Rules
@@ -77,7 +84,7 @@ This is a version of the classic game BATTLESHIP. This will develop in three par
 
 
 
-	2. Computer player
+	3. Computer player
 	Placing ships
 
 	Guessing
