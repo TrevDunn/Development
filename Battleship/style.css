@@ -7,7 +7,7 @@
 
 .game-board {
 	border: 5px solid purple;
-	background: rgba(10, 50, 210, .30);
+	background: rgba(50, 50, 50, .10);
 	display: inline-block;
 }
 
