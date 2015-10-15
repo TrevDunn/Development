@@ -1,1 +1,26 @@
 /*Battleship*/
+
+#container {
+	border: 10px solid grey;
+	display: inline-block;
+}
+
+.game-board {
+	border: 5px solid purple;
+	background: rgba(10, 50, 210, .30);
+	display: inline-block;
+}
+
+.latitude {
+	display: block;
+}
+
+.square-space {
+	display: inline-block;
+	border: 2px solid cornflowerblue;
+	padding: 20px;
+	max-width: 100px;
+	min-width: 50px;
+	max-height: 100px;
+	min-height: 50px;
+}

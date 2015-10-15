@@ -90,6 +90,10 @@ This is a version of the classic game BATTLESHIP. This will develop in three par
 	Guessing
 
 
+Sources:
+	http://en.battleship-game.org/
+		Use of all JS, help primarily with understanding how to force Ships to continue to proper adjacent Squares
+
 
 Bonuses:
 	Salvo: Fire as many shots as you have ships remaining per turn
