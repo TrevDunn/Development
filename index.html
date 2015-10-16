@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Battleship: The Game!</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <style>
@@ -15,9 +15,60 @@
 <body>
 	<button id="game-starter">Start The Game</button>
 	<div id="container">
-
+		<section id="ship-key">
+			<h1>Battleship Key</h1>
+			<ul>
+				<li>Aircraft Carrier</li>
+				<li class="boat-button" id="place-aircraft-carrier">
+					<img src="">
+					<div class="block-holder">
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+					</div>
+				</li>
+				<li>Battleship</li>
+				<li class="boat-button" id="place-battleship">
+					<img src="">
+					<div class="block-holder">
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+					</div>
+				</li>
+				<li>Cruiser</li>
+				<li class="boat-button" id="place-cruiser">
+					<img src="">
+					<div class="block-holder">
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+					</div>
+				</li>
+				<li>Detroyer</li>
+				<li class="boat-button" id="place-destroyer">
+					<img src="">
+					<div class="block-holder">
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+					</div>
+				</li>
+				<li>Frigate</li>
+				<li class="boat-button" id="place-frigate">
+					<img src="">
+					<div class="block-holder">
+						<div class="boat-blocks"></div>
+						<div class="boat-blocks"></div>
+					</div>
+				</li>
+			</ul>
+		</section>
 	</div>
-	<script type="text/javascript" src="app.js">
+	<script type="text/javascript" src="js/app.js">
 
 	</script>
 </body>

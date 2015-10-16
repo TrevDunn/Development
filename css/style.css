@@ -3,12 +3,14 @@
 #container {
 	border: 10px solid grey;
 	display: inline-block;
+	overflow: hidden;
 }
 
 .game-board {
 	border: 5px solid purple;
 	background: rgba(50, 50, 50, .10);
 	display: inline-block;
+	float: right;
 }
 
 .latitude {
@@ -20,7 +22,61 @@
 	border: 2px solid cornflowerblue;
 	padding: 20px;
 	max-width: 100px;
-	min-width: 50px;
+	min-width: 20px;
 	max-height: 100px;
-	min-height: 50px;
+	min-height: 20px;
 }
+
+section#ship-key {
+	overflow: hidden;
+	border: 2px solid darkorange;
+	display: inline-block;
+	float: left;
+}
+
+li{
+	display: block;
+}
+
+li.boat-button {
+	display: inline;
+}
+
+div.block-holder {
+	display: inline-flex;
+	background: solid red;
+}
+
+div.boat-blocks {
+	width: 8px;
+	height: 8px;
+	background: rgba(0, 100, 30, .2);
+	border: 1px solid rgb(0, 100, 30);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

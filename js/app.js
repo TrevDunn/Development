@@ -80,6 +80,7 @@ var drainOcean = function() {
 // }
 
 
+
 // HIDES ships on Guess board (player 2 board?)
 HideShips = (function(){
 	var aircraftCarrier = ['1','2','3','4','5'];
