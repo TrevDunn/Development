@@ -8,6 +8,14 @@ Style Guide:
 		Expect JQeury to be used when adding event listeners, especially those that require all elements of a particular type or class to become clickable or "hoverable."
 
 
+
+
+Personal Log:
+
+Oct 16:
+	Very unsatisfied with how I've handled the computer's randome placement of hidden ships. If "Don't Repeat Yourself" was a higher goal than simply making this work to begin with, then I would spend much more time figuring how to make this code dynamic. Instead, I will work with what I have, given that there is much work left to do in regards to allowing the game to be playable in part or in whole.
+
+
 Coding Process:
 
 	1. Be able to guess generated ships

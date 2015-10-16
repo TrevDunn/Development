@@ -83,29 +83,75 @@ $('#place-aircraft-carrier').click(function(){
 
 
 
-
+	 var compCordsA = ['1','2','3','4','5'];       //Aircraft Carrier
+	// var battleship = ['1','2','3','4'];
+	// var cruiser = ['1','2','3'];
+	// var destroyer = ['1','2','3'];
+	// var frigate = ['1','2'];
 // Computer Ship placement
 	// will utilize the module's hidden array so as to hide ship locations from Player1
 
-var computerPlacement = (function(){
 
-	var compCords A = ['1','2','3','4','5'];       //Aircraft Carrier
-	var battleship = ['1','2','3','4'];
-	var cruiser = ['1','2','3'];
-	var destroyer = ['1','2','3'];
-	var frigate = ['1','2'];
+	var computerBoard = [	['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
+							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',]]
 
+var computerPlacement = function(){
+
+	//check X axis spaces (to the right) for all 'empty' spaces
 
 	return {
-
-
-
-
+		//places Aircraft Carrier
+		generateShipA : function() {
+			var finalizeA = false;
+			while (finalizeA === false) {
+				var orient = Math.round(Math.random());
+				var xCordA = Math.floor(Math.random() * 10);
+				var yCordA = Math.floor(Math.random() * 10);
+				if ((orient === 1) && (xCordA !== 10) && (yCordA !== 10) && (computerBoard[yCordA][xCordA] === '&nbsp')) {
+					var checkCount = 0;
+					//Check X axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsA.length; i++) {
+						if (computerBoard[yCordA][xCordA+i] === '&nbsp') {
+							checkCount += 1;
+							console.log(computerBoard[yCordA][xCordA+i]);
+						};
+						if (compCordsA.length === checkCount) {
+							for (var k = 0; k < compCordsA.length; k++) {
+								computerBoard[yCordA][xCordA+k] = 'A';
+							};
+							finalizeA = true;
+						};
+					};					
+				} else if ((orient === 0) && (xCordA !== 10) && (yCordA !== 10) && (computerBoard[yCordA][xCordA] === '&nbsp')) {
+					var checkCount = 0;
+					//Check Y axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsA.length; i++) {
+						if (computerBoard[yCordA+i][xCordA] === '&nbsp') {
+							checkCount += 1;
+							console.log(computerBoard[yCordA+i][xCordA]);
+						};
+						if (compCordsA.length === checkCount) {
+							for (var k = 0; k < compCordsA.length; k++) {
+								computerBoard[yCordA+k][xCordA] = 'A';
+							};
+							finalizeA = true;
+						};
+					};
+				};
+			};
+		},
 	};
+}();
 
-
-
-})();
+computerPlacement.generateShipA();
 
 	// create a Counter that will end in lose state if == 0
 		//this will be temporary
