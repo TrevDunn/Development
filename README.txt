@@ -1,6 +1,14 @@
 This is a version of the classic game BATTLESHIP. This will develop in three parts. This README will detail the user requirements of each part.
 
+Style Guide:
 
+	When to use JQuery:
+		While JQuery can easily add functionality to the program that would otherwise be taxing to code, I will refrain from using it in most cases for the sake of my own familiarity with Javascript.
+
+		Expect JQeury to be used when adding event listeners, especially those that require all elements of a particular type or class to become clickable or "hoverable."
+
+
+Coding Process:
 
 	1. Be able to guess generated ships
 		Ships
@@ -73,16 +81,6 @@ This is a version of the classic game BATTLESHIP. This will develop in three par
 		This mode will be useful when bug testing
 			set up the board and then play your board.
 
-			
-
-
-
-
-
-
-
-
-
 
 	3. Computer player
 	Placing ships
@@ -99,3 +97,4 @@ Bonuses:
 	Salvo: Fire as many shots as you have ships remaining per turn
 	2 Players: Two arrays, players take turns
 	Online: 2 Players (or more??) online
+	Add the 1-10 and A-J row and column identifiers (purely aesthetic)

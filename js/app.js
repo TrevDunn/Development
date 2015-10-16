@@ -5,11 +5,10 @@ window.onload = function () {
 	console.log('Loaded up.');
 
 	//Start button to generate board. Will refactor later to decide how many players (comp vs 2p)
-	document.querySelector('button#game-starter').addEventListener('click', (function() {
-		 drainOcean();
-		 buildOcean();
-
-	}));
+	$('button#game-starter').click(function(){
+		drainOcean();
+		buildOcean();
+	});
 
 };
 
@@ -51,7 +50,7 @@ var buildOcean = function(){
 			tempSquares.setAttribute('x-lat', i);
 			tempSquares.setAttribute('y-lon-', j);
 			tempSquares.innerHTML = oceanBoardArray[i][j];
-				// Use this random color board for win state - make function celebrationBoard on a loop
+				//Use this random color board for win state - make function celebrationBoard on a loop
 			 //tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');');
 			tempRow.appendChild(tempSquares);
 			console.log(oceanBoardArray[i][j]);
@@ -72,12 +71,52 @@ var drainOcean = function() {
 };
 
 
-//Make ships attempt 1:
-// var placeShip = function(xlat, ylon, xlat2, ylon2, shipArray) {
-// 	if (((xlat == xlat2) || (ylon == ylon2)) && (shipArray.length >== Math.abs(xlat - xlat2) && (shipArray.length >== Math.abs(ylon - ylon2))) && ...) {
+// Ship Placement logic - Have to do amost same thing for each type of ship? Can it be dynamic? Should it be?
 
-// 	};
-// }
+//Initialize placement of Aircraft Carrier
+$('#place-aircraft-carrier').click(function(){
+	console.log(this);
+
+	//remove any currently place permenant AND temporary div classifications
+
+});
+
+
+
+
+// Computer Ship placement
+	// will utilize the module's hidden array so as to hide ship locations from Player1
+
+var computerPlacement = (function(){
+
+	var compCords A = ['1','2','3','4','5'];       //Aircraft Carrier
+	var battleship = ['1','2','3','4'];
+	var cruiser = ['1','2','3'];
+	var destroyer = ['1','2','3'];
+	var frigate = ['1','2'];
+
+
+	return {
+
+
+
+
+	};
+
+
+
+})();
+
+	// create a Counter that will end in lose state if == 0
+		//this will be temporary
+
+
+var placeShip = function(xlat, ylon, xlat2, ylon2, shipArray) {
+	if (((xlat == xlat2) || (ylon == ylon2)) && (shipArray.length >= Math.abs(xlat - xlat2) && (shipArray.length >= Math.abs(ylon - ylon2)))) {
+
+	};
+}
+
 
 
 
