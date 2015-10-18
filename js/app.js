@@ -25,7 +25,7 @@ window.onload = function () {
 	});
 };
 
-	$('div.empty').on("hover",(function() {
+	$('div.empty').on("click",(function() {
 		console.log(this);
 		GameModule.divGuess();
 	}));
