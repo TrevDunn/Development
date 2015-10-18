@@ -25,13 +25,10 @@ window.onload = function () {
 	});
 };
 
-
-$('div.empty').on("click",(function() {
-
-$('.empty').on("click",(function() {
-	console.log(this);
-	GameModule.divGuess();
-}));
+	$('.empty').on("click",(function() {
+		console.log(this);
+		GameModule.divGuess();
+	}));
  
 
 // Ship Placement logic - Have to do amost same thing for each type of ship? Can it be dynamic? Should it be?
