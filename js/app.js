@@ -51,7 +51,7 @@ var buildOcean = function(){
 			tempSquares.setAttribute('y-lon-', j);
 			tempSquares.innerHTML = oceanBoardArray[i][j];
 				//Use this random color board for win state - make function celebrationBoard on a loop
-			 //tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');');
+			 tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');');
 			tempRow.appendChild(tempSquares);
 			console.log(oceanBoardArray[i][j]);
 		};
@@ -74,7 +74,7 @@ var drainOcean = function() {
 // Ship Placement logic - Have to do amost same thing for each type of ship? Can it be dynamic? Should it be?
 
 //Initialize placement of Aircraft Carrier
-$('#place-aircraft-carrier').click(function(){
+$('#place-aircraft-carrier').eq(0).click(function(){
 	console.log(this);
 
 	//remove any currently place permenant AND temporary div classifications
@@ -83,11 +83,11 @@ $('#place-aircraft-carrier').click(function(){
 
 
 
-	 var compCordsA = ['1','2','3','4','5'];       //Aircraft Carrier
-	// var battleship = ['1','2','3','4'];
-	// var cruiser = ['1','2','3'];
-	// var destroyer = ['1','2','3'];
-	// var frigate = ['1','2'];
+	var compCordsA = ['1','2','3','4','5'];		//Aircraft Carrier
+	var compCordsB = ['1','2','3','4'];			//Battleship
+	var compCordsC = ['1','2','3'];				//Cruiser
+	var compCordsD = ['1','2','3'];				//Destroyer
+	var compCordsF = ['1','2'];					//Frigate
 // Computer Ship placement
 	// will utilize the module's hidden array so as to hide ship locations from Player1
 
@@ -110,48 +110,234 @@ var computerPlacement = function(){
 	return {
 		//places Aircraft Carrier
 		generateShipA : function() {
-			var finalizeA = false;
-			while (finalizeA === false) {
+			var finalize = false;
+			while (finalize === false) {
 				var orient = Math.round(Math.random());
-				var xCordA = Math.floor(Math.random() * 10);
-				var yCordA = Math.floor(Math.random() * 10);
-				if ((orient === 1) && (xCordA !== 10) && (yCordA !== 10) && (computerBoard[yCordA][xCordA] === '&nbsp')) {
+				var xCord = Math.floor(Math.random() * 10);
+				var yCord = Math.floor(Math.random() * 10);
+				console.log('Setting A.');
+				if ((orient === 1) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
 					var checkCount = 0;
 					//Check X axis spaces (to the right) for all 'empty' spaces
 					for (var i = 0; i < compCordsA.length; i++) {
-						if (computerBoard[yCordA][xCordA+i] === '&nbsp') {
-							checkCount += 1;
-							console.log(computerBoard[yCordA][xCordA+i]);
-						};
-						if (compCordsA.length === checkCount) {
-							for (var k = 0; k < compCordsA.length; k++) {
-								computerBoard[yCordA][xCordA+k] = 'A';
+						if ((xCord+i) <= 9) {
+							if (computerBoard[yCord][xCord+i] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord][xCord+i]);
 							};
-							finalizeA = true;
+							if (compCordsA.length === checkCount) {
+								for (var k = 0; k < compCordsA.length; k++) {
+									computerBoard[yCord][xCord+k] = 'A';
+								};
+								finalize = true;
+							};
 						};
+						
 					};					
-				} else if ((orient === 0) && (xCordA !== 10) && (yCordA !== 10) && (computerBoard[yCordA][xCordA] === '&nbsp')) {
+				} else if ((orient === 0) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
 					var checkCount = 0;
 					//Check Y axis spaces (to the right) for all 'empty' spaces
 					for (var i = 0; i < compCordsA.length; i++) {
-						if (computerBoard[yCordA+i][xCordA] === '&nbsp') {
-							checkCount += 1;
-							console.log(computerBoard[yCordA+i][xCordA]);
-						};
-						if (compCordsA.length === checkCount) {
-							for (var k = 0; k < compCordsA.length; k++) {
-								computerBoard[yCordA+k][xCordA] = 'A';
+						if ((yCord+i) <= 9) {
+							if (computerBoard[yCord+i][xCord] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord+i][xCord]);
 							};
-							finalizeA = true;
+							if (compCordsA.length === checkCount) {
+								for (var k = 0; k < compCordsA.length; k++) {
+									computerBoard[yCord+k][xCord] = 'A';
+								};
+								finalize = true;
+							};
 						};
 					};
 				};
 			};
 		},
-	};
+		generateShipB : function() {
+			var finalize = false;
+			while (finalize === false) {
+				var orient = Math.round(Math.random());
+				var xCord = Math.floor(Math.random() * 10);
+				var yCord = Math.floor(Math.random() * 10);
+				console.log('Setting B.');
+				if ((orient === 1) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check X axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsB.length; i++) {
+						if ((xCord+i) <= 9) {
+							if (computerBoard[yCord][xCord+i] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord][xCord+i]);
+							};
+							if (compCordsB.length === checkCount) {
+								for (var k = 0; k < compCordsB.length; k++) {
+									computerBoard[yCord][xCord+k] = 'B';
+								};
+								finalize = true;
+							};
+						};
+					};					
+				} else if ((orient === 0) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check Y axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsB.length; i++) {
+						if ((yCord+i) <= 9) {
+							if (computerBoard[yCord+i][xCord] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord+i][xCord]);
+							};
+							if (compCordsB.length === checkCount) {
+								for (var k = 0; k < compCordsB.length; k++) {
+									computerBoard[yCord+k][xCord] = 'B';
+								};
+								finalize = true;
+							};
+						};
+					};
+				};
+			};
+		},
+		generateShipC : function() {
+			var finalize = false;
+			while (finalize === false) {
+				var orient = Math.round(Math.random());
+				var xCord = Math.floor(Math.random() * 10);
+				var yCord = Math.floor(Math.random() * 10);
+				console.log('Setting C.');
+				if ((orient === 1) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check X axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsC.length; i++) {
+						if ((xCord+i) <= 9) {
+							if (computerBoard[yCord][xCord+i] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord][xCord+i]);
+							};
+							if (compCordsC.length === checkCount) {
+								for (var k = 0; k < compCordsC.length; k++) {
+									computerBoard[yCord][xCord+k] = 'C';
+								};
+								finalize = true;
+							};
+						};
+					};					
+				} else if ((orient === 0) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check Y axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsC.length; i++) {
+						if ((yCord+i) <= 9) {
+							if (computerBoard[yCord+i][xCord] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord+i][xCord]);
+							};
+							if (compCordsC.length === checkCount) {
+								for (var k = 0; k < compCordsC.length; k++) {
+									computerBoard[yCord+k][xCord] = 'C';
+								};
+								finalize = true;
+							};
+						};
+					};
+				};
+			};
+		},
+		generateShipD : function() {
+			var finalize = false;
+			while (finalize === false) {
+				var orient = Math.round(Math.random());
+				var xCord = Math.floor(Math.random() * 10);
+				var yCord = Math.floor(Math.random() * 10);
+				console.log('Setting D.');
+				if ((orient === 1) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check X axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsD.length; i++) {
+						if ((xCord+i) <= 9) {
+							if (computerBoard[yCord][xCord+i] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord][xCord+i]);
+							};
+							if (compCordsD.length === checkCount) {
+								for (var k = 0; k < compCordsD.length; k++) {
+									computerBoard[yCord][xCord+k] = 'D';
+								};
+								finalize = true;
+							};
+						};
+					};					
+				} else if ((orient === 0) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check Y axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsD.length; i++) {
+						if ((yCord+i) <= 9) {
+							if (computerBoard[yCord+i][xCord] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord+i][xCord]);
+							};
+							if (compCordsD.length === checkCount) {
+								for (var k = 0; k < compCordsD.length; k++) {
+									computerBoard[yCord+k][xCord] = 'D';
+								};
+								finalize = true;
+							};
+						};
+					};
+				};
+			};
+		},
+		generateShipF : function() {
+			var finalize = false;
+			while (finalize === false) {
+				var orient = Math.round(Math.random());
+				var xCord = Math.floor(Math.random() * 10);
+				var yCord = Math.floor(Math.random() * 10);
+				console.log('Setting F.');
+				if ((orient === 1) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check X axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsF.length; i++) {
+						if ((xCord+i) <= 9) {
+							if (computerBoard[yCord][xCord+i] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord][xCord+i]);
+							};
+							if (compCordsF.length === checkCount) {
+								for (var k = 0; k < compCordsF.length; k++) {
+									computerBoard[yCord][xCord+k] = 'F';
+								};
+								finalize = true;
+							};
+						};
+					};					
+				} else if ((orient === 0) && (xCord !== 10) && (yCord !== 10) && (computerBoard[yCord][xCord] == '&nbsp')) {
+					var checkCount = 0;
+					//Check Y axis spaces (to the right) for all 'empty' spaces
+					for (var i = 0; i < compCordsF.length; i++) {
+						if ((yCord+i) <= 9) {
+							if (computerBoard[yCord+i][xCord] === '&nbsp') {
+								checkCount += 1;
+								// console.log(computerBoard[yCord+i][xCord]);
+							};
+							if (compCordsF.length === checkCount) {
+								for (var k = 0; k < compCordsF.length; k++) {
+									computerBoard[yCord+k][xCord] = 'F';
+								};
+								finalize = true;
+							};
+						};
+					};
+				};
+			};
+		},
+	}; // end return
 }();
 
 computerPlacement.generateShipA();
+computerPlacement.generateShipB();
+computerPlacement.generateShipC();
+computerPlacement.generateShipD();
+computerPlacement.generateShipF();
 
 	// create a Counter that will end in lose state if == 0
 		//this will be temporary
