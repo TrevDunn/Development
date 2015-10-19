@@ -461,7 +461,7 @@ var GameModule = function(){
 		},
 		winState : function() {
 			if (document.querySelectorAll('#hit').length == 17) {
-				prompt('We are victorious!.\nYou sunk their battleships!')
+				alert('We are victorious!.\nYou sunk their battleships!')
 				GameModule.fireworks();
 				clearShips();
 				clearShips();
