@@ -1,5 +1,9 @@
 /*Battleship*/
 
+body {
+	font-family: helvetica, arial;
+}
+
 #container {
 	border: 10px solid grey;
 	display: inline-block;
@@ -8,7 +12,7 @@
 
 .game-board {
 	border: 5px solid purple;
-	background: rgba(50, 50, 50, .10);
+	background: rgba(0, 0, 256, .55);
 	display: inline-block;
 	float: right;
 }
@@ -19,7 +23,7 @@
 
 .square-space {
 	display: inline-block;
-	border: 2px solid cornflowerblue;
+	border: 2px solid rgba(256, 200, 0, 1);
 	padding: 20px;
 	max-width: 100px;
 	min-width: 20px;
@@ -27,6 +31,11 @@
 	min-height: 20px;
 	height: 20px;
 	width: 20px;
+	color: blue;
+	text-align: center;
+	vertical-align: center;
+	font-size: 21px;
+	/*z-index: 1000;*/
 }
 
 section#ship-key {
@@ -49,16 +58,23 @@ div.block-holder {
 	background: solid red;
 }
 
-div.boat-blocks {
+div [type='boat-blocks'] {
 	width: 8px;
 	height: 8px;
 	background: rgba(0, 100, 30, .2);
 	border: 1px solid rgb(0, 100, 30);
 }
 
+#hit {
+	border: 2px solid red;
+	background-color: rgba(256, 0, 0, .3);
+	color: red;
+}
 
-
-
+#boat-hits {
+	border: 1px solid red;
+	background: rgba(256, 0, 0, .3);
+}
 
 
 
