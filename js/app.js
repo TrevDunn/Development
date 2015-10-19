@@ -25,9 +25,8 @@ window.onload = function () {
 	});
 };
 
-	$('.empty').on("click",(function() {
+	$('#empty').on("hover",(function() {
 		console.log(this);
-		GameModule.divGuess();
 	}));
  
 
@@ -45,11 +44,12 @@ window.onload = function () {
 	
 
 var GameModule = function(){
-	var compCordsA = ['1','2','3','4','5'];		//Aircraft Carrier
-	var compCordsB = ['1','2','3','4'];			//Battleship
-	var compCordsC = ['1','2','3'];				//Cruiser
-	var compCordsD = ['1','2','3'];				//Destroyer
-	var compCordsF = ['1','2'];					//Frigate
+	var compCordsA = [0,1,2,2,4];		//Aircraft Carrier
+	var compCordsB = [0,1,2,2];			//Battleship
+	var compCordsC = [0,1,2];				//Cruiser
+	var compCordsD = [0,1,2];				//Destroyer
+	var compCordsF = [0,1];					//Frigate
+	var countdown = 20;
 	var oceanBoardArray = [	['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
 							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
 							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
@@ -93,14 +93,48 @@ var GameModule = function(){
 				//Using nested for functions to create Square divs within each appended row
 				for (var j = 0; j < oceanBoardArray[i].length; j++) {  
 					var tempSquares = document.createElement('div');
-					tempSquares.classList.add('square-space','empty');
+					tempSquares.id = 'empty';
+					tempSquares.classList.add('square-space');
 					tempSquares.setAttribute('x-lat', i);
-					tempSquares.setAttribute('y-lon-', j);
+					tempSquares.setAttribute('y-lon', j);
 					tempSquares.innerHTML = oceanBoardArray[i][j];
+					tempSquares.addEventListener('click', (function(){
+						countdown--;
+						if ((this.id === 'empty') && (computerBoard[parseInt(this.getAttribute('y-lon'))][parseInt(this.getAttribute('x-lat'))] != '&nbsp')) {
+							this.id = 'hit';
+							this.innerHTML = 'X';
+							var coordinates = computerBoard[parseInt(this.getAttribute('y-lon'))][parseInt(this.getAttribute('x-lat'))]
+							switch (coordinates) {
+								case 'A':
+									compCordsA[0]++;
+									break;
+								case 'B':
+									compCordsB[0]++;
+									break;
+								case 'C':
+									compCordsC[0]++;
+									break;
+								case 'D':
+									compCordsD[0]++;
+									break;
+								case 'F':
+									compCordsF[0]++;
+									break;
+								default:
+									console.log('Something went wrong.')
+							};
+							GameModule.hitCheck();							
+						} else if (this.id === 'empty') {
+							this.id = 'miss';
+							this.innerHTML = '•';
+							console.log(this);
+						};
+
+					}));
 						//Use this random color board for win state - make function celebrationBoard on a loop
 					 //tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');');
 					tempRow.appendChild(tempSquares);
-					console.log(oceanBoardArray[i][j]);
+					//console.log(oceanBoardArray[i][j]);
 				};
 			};
 		},
@@ -345,14 +379,62 @@ var GameModule = function(){
 				};
 				
 			};
+			compCordsA = [0,1,2,2,4];		//Aircraft Carrier
+			compCordsB = [0,1,2,2];			//Battleship
+			compCordsC = [0,1,2];			//Cruiser
+			compCordsD = [0,1,2];			//Destroyer
+			compCordsF = [0,1];				//Frigate
+
+			if (countdown != 20) {
+				for (var i = 0; 0 < document.querySelectorAll('#boat-hits').length; i++) {
+					var temp = document.querySelector('#boat-hits');
+					temp.id = '';
+				};
+			};
+			countdown = 20;
 		},
-		divGuess : function() {
-			console.log(this);
-			// if (this.) {
+		hitCheck : function() {
+			if (compCordsA.length == compCordsA[0] && (compCordsA[1] !== 0)) {
+				compCordsA[1]--;
+				for (var i = 0; i < compCordsA.length; i++) {
+					var temp = document.querySelectorAll('.boatA')[i];
+					temp.id = 'boat-hits';
+				};
+			};
+			if (compCordsB.length == compCordsB[0] && (compCordsB[1] !== 0)) {
+				compCordsB[1]--;
+				for (var i = 0; i < compCordsB.length; i++) {
+					var temp = document.querySelectorAll('.boatB')[i];
+					temp.id = 'boat-hits';
+				};
+				
+			};
+			if (compCordsC.length == compCordsC[0] && (compCordsC[1] !== 0)) {
+				compCordsC[1]--;
+				for (var i = 0; i < compCordsC.length; i++) {
+					var temp = document.querySelectorAll('.boatC')[i];
+					temp.id = 'boat-hits';
+				};
+				
+			};
+			if (compCordsD.length == compCordsD[0] && (compCordsD[1] !== 0)) {
+				compCordsD[1]--;
+				for (var i = 0; i < compCordsD.length; i++) {
+					var temp = document.querySelectorAll('.boatD')[i];
+					temp.id = 'boat-hits';
+				};
+				
+			};
+			if (compCordsF.length == compCordsF[0] && (compCordsF[1] !== 0)) {
+				compCordsF[1]--;
+				for (var i = 0; i < compCordsF.length; i++) {
+					var temp = document.querySelectorAll('.boatF')[i];
+					temp.id = 'boat-hits';
+				};
+				
+			};
 
-			// } else{
 
-			// };
 		},
 	}; // end return
 }();
