@@ -49,7 +49,7 @@ var GameModule = function(){
 	var compCordsC = [0,1,2];				//Cruiser
 	var compCordsD = [0,1,2];				//Destroyer
 	var compCordsF = [0,1];					//Frigate
-	var countdown = 50;
+	var countdown = 30;
 	var oceanBoardArray = [	['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
 							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
 							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
@@ -399,13 +399,13 @@ var GameModule = function(){
 			compCordsD = [0,1,2];			//Destroyer
 			compCordsF = [0,1];				//Frigate
 
-			if (countdown != 50) {
+			if (countdown != 30) {
 				for (var i = 0; 0 < document.querySelectorAll('#boat-hits').length; i++) {
 					var temp = document.querySelector('#boat-hits');
 					temp.id = '';
 				};
 			};
-			countdown = 50;
+			countdown = 30;
 		},
 		hitCheck : function() {
 			if (compCordsA.length == compCordsA[0] && (compCordsA[1] !== 0)) {
@@ -471,7 +471,7 @@ var GameModule = function(){
 		},
 		fireworks : function() {
 			var tempSquares = document.querySelectorAll('.square-space');
-			var flashBoxes = setInterval(tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');'), 50);
+			var flashBoxes = setInterval(tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');'), 30);
 		}
 	}; // end return
 }();
