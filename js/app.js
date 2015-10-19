@@ -49,7 +49,7 @@ var GameModule = function(){
 	var compCordsC = [0,1,2];				//Cruiser
 	var compCordsD = [0,1,2];				//Destroyer
 	var compCordsF = [0,1];					//Frigate
-	var countdown = 20;
+	var countdown = 50;
 	var oceanBoardArray = [	['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
 							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
 							['&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp', '&nbsp',],
@@ -77,6 +77,14 @@ var GameModule = function(){
 		// First attempt at div constructor loop for spaces; creates board inside game-board div
 		buildOcean : function(){
 
+			//creates a countdown timer
+			var tempTimer = document.createElement('div');
+			tempTimer.id = 'timer';
+			tempTimer.innerHTML = (':' + countdown)
+			document.querySelector('#container').appendChild(tempTimer);
+
+
+
 			//creates the div game-board
 			var tempBoard = document.createElement('div');
 			tempBoard.className = 'game-board';
@@ -99,7 +107,8 @@ var GameModule = function(){
 					tempSquares.setAttribute('y-lon', j);
 					tempSquares.innerHTML = oceanBoardArray[i][j];
 					tempSquares.addEventListener('click', (function(){
-						countdown--;
+
+						//turns divs to buttons
 						if ((this.id === 'empty') && (computerBoard[parseInt(this.getAttribute('y-lon'))][parseInt(this.getAttribute('x-lat'))] != '&nbsp')) {
 							this.id = 'hit';
 							this.innerHTML = 'X';
@@ -123,11 +132,14 @@ var GameModule = function(){
 								default:
 									console.log('Something went wrong.')
 							};
-							GameModule.hitCheck();							
+							GameModule.hitCheck();
+							GameModule.winState();							
 						} else if (this.id === 'empty') {
+							countdown--;
+							tempTimer.innerHTML = (':' + countdown);
 							this.id = 'miss';
 							this.innerHTML = '•';
-							console.log(this);
+							GameModule.loseState();
 						};
 
 					}));
@@ -145,8 +157,10 @@ var GameModule = function(){
 
 			if (tempBoard) {
 				var tempContainer = document.getElementById('container');
+				var tempTimer = document.getElementById('timer');
 				console.log(tempContainer, tempBoard);
 				tempContainer.removeChild(tempBoard);
+				tempContainer.removeChild(tempTimer);
 				
 			}
 		},
@@ -385,13 +399,13 @@ var GameModule = function(){
 			compCordsD = [0,1,2];			//Destroyer
 			compCordsF = [0,1];				//Frigate
 
-			if (countdown != 20) {
+			if (countdown != 50) {
 				for (var i = 0; 0 < document.querySelectorAll('#boat-hits').length; i++) {
 					var temp = document.querySelector('#boat-hits');
 					temp.id = '';
 				};
 			};
-			countdown = 20;
+			countdown = 50;
 		},
 		hitCheck : function() {
 			if (compCordsA.length == compCordsA[0] && (compCordsA[1] !== 0)) {
@@ -436,6 +450,29 @@ var GameModule = function(){
 
 
 		},
+		loseState : function() {
+			if (countdown == 0) {
+				alert('Nuclear Launch Detected.\nYou\'ve run out of time, commander.')
+				clearShips();
+				clearShips();
+				GameModule.drainOcean();
+				GameModule.buildOcean();
+			}
+		},
+		winState : function() {
+			if (document.querySelectorAll('#hit').length == 17) {
+				prompt('We are victorious!.\nYou sunk their battleships!')
+				GameModule.fireworks();
+				clearShips();
+				clearShips();
+				GameModule.drainOcean();
+				GameModule.buildOcean();
+			}
+		},
+		fireworks : function() {
+			var tempSquares = document.querySelectorAll('.square-space');
+			var flashBoxes = setInterval(tempSquares.setAttribute('style', 'background:rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) +',' + (Math.floor(Math.random() * 256)) + ');'), 50);
+		}
 	}; // end return
 }();
 
